@@ -1,0 +1,6 @@
+apiVersion: v2
+name: zigbee2mqtt
+description: A Helm chart for deploying Zigbee2MQTT
+type: application
+version: 0.1.0
+appVersion: "1.30.4" # Replace with the latest Zigbee2MQTT version

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-zigbee2mqtt
+  labels:
+    app: zigbee2mqtt
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: zigbee2mqtt
+  template:
+    metadata:
+      labels:
+        app: zigbee2mqtt
+    spec:
+      containers:
+        - name: zigbee2mqtt
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: MQTT_SERVER
+              value: "{{ .Values.mqtt.server }}"
+            - name: MQTT_USER
+              value: "{{ .Values.mqtt.user }}"
+            - name: MQTT_PASSWORD
+              value: "{{ .Values.mqtt.password }}"
+          volumeMounts:
+            - name: zigbee-device
+              mountPath: /dev/zigbee
+              readOnly: true
+      volumes:
+        - name: zigbee-device
+          hostPath:
+            path: {{ .Values.zigbeeDevice }}
+            type: CharDevice
+      nodeSelector: {{ .Values.nodeSelector }}
+      tolerations: {{ .Values.tolerations }}
+      affinity: {{ .Values.affinity }}

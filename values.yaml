@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  repository: koenkk/zigbee2mqtt
+  tag: 2.2.1 # Replace with the latest version
+  pullPolicy: IfNotPresent
+
+zigbeeDevice: /dev/ttyACM0 # Replace with your Zigbee device path
+
+mqtt:
+  server: mqtt://mqtt-broker
+  user: ""
+  password: ""
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+tailscale:
+  enabled: false
+  hostname: "" # Optional: Specify a custom hostname for Tailscale
+
