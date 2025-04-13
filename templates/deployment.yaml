@@ -34,6 +34,4 @@ spec:
           hostPath:
             path: {{ .Values.zigbeeDevice }}
             type: CharDevice
-      nodeSelector: {{ .Values.nodeSelector }}
-      tolerations: {{ .Values.tolerations }}
-      affinity: {{ .Values.affinity }}
+   
