@@ -27,7 +27,7 @@ spec:
               value: "{{ .Values.mqtt.password }}"
           volumeMounts:
             - name: zigbee-device
-              mountPath: /dev/zigbee
+              mountPath: {{ .Values.zigbeeDevice }}
               readOnly: true
             - name: app-data
               mountPath: /app/data
