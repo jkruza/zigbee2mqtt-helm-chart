@@ -25,6 +25,11 @@ spec:
               value: "{{ .Values.mqtt.user }}"
             - name: MQTT_PASSWORD
               value: "{{ .Values.mqtt.password }}"
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - SYS_RAWIO
           volumeMounts:
             - name: zigbee-device
               mountPath: {{ .Values.zigbeeDevice }}
