@@ -29,9 +29,14 @@ spec:
             - name: zigbee-device
               mountPath: /dev/zigbee
               readOnly: true
+            - name: app-data
+              mountPath: /app/data
       volumes:
         - name: zigbee-device
           hostPath:
             path: {{ .Values.zigbeeDevice }}
             type: CharDevice
-   
+        - name: app-data
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-app-data
+

@@ -12,10 +12,7 @@ mqtt:
   user: ""
   password: ""
 
-resources: {}
-nodeSelector: {}
-tolerations: []
-affinity: {}
+
 
 tailscale:
   enabled: false
